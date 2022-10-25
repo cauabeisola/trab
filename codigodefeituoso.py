@@ -50,7 +50,11 @@ for j in range(len(jogador)):
 maior = 0
 ganhador = []
 for l in jogador:
-    if l[1] >= maior:
+    if l[1] > maior:
+        maior = l[1]
+        ganhador.append(l[0])
+for l in jogador:
+    if l[1] == maior:
         maior = l[1]
         ganhador.append(l[0])
 if len(ganhador) == 1:
