@@ -33,7 +33,7 @@ while len(perguntas_feitas) < 19:
                 cont += 1
             clear()
             jogador_da_vez = int(input('Qual o jogador da vez?[digite alguma letra para encerrar o jogo]: '))
-            acrt = int(input('Ele acertou?:\n1-Sim\n2-Não'))
+            acrt = int(input('Ele acertou?:\n1-Sim\n2-Não\n'))
             if acrt == 1:
                 jogador[jogador_da_vez][1] += 1
         except:
@@ -54,7 +54,7 @@ for l in jogador:
         maior = l[1]
         ganhador.append(l[0])
 for l in jogador:
-    if l[1] == maior:
+    if l[1] == maior and l[0] != ganhador:
         maior = l[1]
         ganhador.append(l[0])
 if len(ganhador) == 1:
