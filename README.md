@@ -1,4 +1,3 @@
-# trab
 ## Instruções de instalação
 ### IOS (Iphone):
 - Baixe o aplicativo iSH na AppStore
