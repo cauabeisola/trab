@@ -6,22 +6,13 @@ perguntas_feitas = []
 jogador = []
 def clear():
     os.system('clear')
-while True:
-    try:
-        qt_jogadores = int(input('Quantos jogadores são?: '))
-    except:
-        print('Erro, caractere inválido')
-    else:
-        break
-for c in range(qt_jogadores):
-    jogador.append([str(input(f'Qual o nome do {c+1}º jogador?: ')), 0])
 c = 0
 while len(perguntas_feitas) < 19:
     try:
         nmr_escolhido = randint(0, 19)
         if c > 0:
             for d in perguntas_feitas:
-                if d == str(nmr_escolhido):
+                if d == int(nmr_escolhido):
                     erro()
     except:
         continue
@@ -36,11 +27,8 @@ while len(perguntas_feitas) < 19:
                     for e in jogador:
                         print(f'{cont} - ', e[0])
                         cont += 1
-                    jogador_da_vez = int(input('Qual o jogador da vez?[digite alguma letra para encerrar o jogo]: '))
-                    if jogador_da_vez > qt_jogadores - 1 or jogador_da_vez < 0:
-                        erro()
-                    acrt = int(input('Ele acertou?:\n1-Sim\n2-Não\n'))
-                    if acrt != 1 and acrt != 2:
+                    jogador_da_vez = int(input('Continuar?\n[1] Sim\n[2] Não\n>>'))
+                    if jogador_da_vez > 2 or jogador_da_vez < 1:
                         erro()
                 except:
                     if isnumeric(jogador_da_vez):
@@ -48,33 +36,13 @@ while len(perguntas_feitas) < 19:
                         sleep(2)
                         continue
                 else: 
-                    break
-            if acrt == 1:
-                jogador[jogador_da_vez][1] += 1
+                    if jogador_da_vez == 1:
+                        break
+                    else:
+                        quit()
         except:
             break
             print('Caractere inválido!')
         perguntas_feitas.append(f'{nmr_escolhido}')
     c += 1
 clear()
-print('Resultado:')
-for j in range(len(jogador)):
-    print(f'\n{j} - ', end='')
-    for k in jogador[j]:
-        print(k, end=' ')
-maior = 0
-ganhador = []
-for l in range(0, len(jogador)):
-    if jogador[l][1] > maior:
-        ganhador.append(jogador[l][0])
-        maior = jogador[l][1]
-for l in range(0, len(jogador)):
-    if jogador[l][1] == maior and jogador[l][0] not in ganhador:
-        ganhador.append(jogador[l][0])
-if len(ganhador) == 1:
-    print(f'O ganhador foi {ganhador[0]}, com {maior} pontos¹')
-else:
-    print(f'\nOs ganhadores foram ', end='')
-    for n in ganhador:
-        print(n, end=', ')
-    print(f'com {maior} ponto(s)!')
